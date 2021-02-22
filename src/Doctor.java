@@ -1,42 +1,21 @@
-public class Doctor {
-    private static int id = 0;
-    private String name;
+import java.util.ArrayList;
+import java.util.Date;
+
+public class Doctor extends User{
     private String speciality;
 
-    Doctor() {
-        System.out.println("Construyendo el objeto Doctor");
-        setId(getId() + 1);
+    public Doctor(String name, String email, String speciality) {
+        super( name, email );
+        setSpeciality( speciality );
     }
 
-    Doctor(String name, String speciality) {
-        this.setName(name);
-        this.setSpeciality(speciality);
-        System.out.println("El nombre del doctor asignado es: " + this.getName());
-        setId(getId() + 1);
+    ArrayList<AvailableAppointment> availableAppointments = new ArrayList<>();
+    public void  addAvailableAppointments(Date date, String time) {
+        availableAppointments.add(new AvailableAppointment(date, time));
     }
 
-    public static int getId() {
-        return id;
-    }
-
-    public static void setId(int id) {
-        Doctor.id = id;
-    }
-
-    public void showName() {
-        System.out.println(getName());
-    }
-
-    public  void showID() {
-        System.out.println("El ID del doctor es: " + getId());
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public ArrayList<AvailableAppointment> getAvailableAppointments() {
+        return availableAppointments;
     }
 
     public String getSpeciality() {
@@ -45,5 +24,28 @@ public class Doctor {
 
     public void setSpeciality(String speciality) {
         this.speciality = speciality;
+    }
+
+    public static class AvailableAppointment {
+        private int id;
+        private Date date;
+        private  String time;
+
+        public AvailableAppointment(Date date, String time) {
+            this.date = date;
+            this.time = time;
+        }
+
+        @Override
+        public String toString() {
+            return "Available Appointments \nDate: " +
+                    this.date + "\nTime: " + this.time;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nSpeciality: " + getSpeciality() +
+                "\n" + getAvailableAppointments();
     }
 }
