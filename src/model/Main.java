@@ -1,5 +1,4 @@
-import static ui.UIMenu.*;
-import java.util.Date;
+package model;
 
 public class Main {
     public static void main(String[] args) {
