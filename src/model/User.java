@@ -57,4 +57,6 @@ public abstract class User {
         return "** model.User ** \nnombre: " + getName() +
                 "\nemail: " + getEmail();
     }
+
+    public abstract void showDataUser();
 }

@@ -48,4 +48,9 @@ public class Patient extends User{
                 "\nWeight: " + getWeight() +
                 "\nHeight " + getHeight();
     }
+
+    @Override
+    public void showDataUser() {
+        System.out.println("Paciente");
+    }
 }
